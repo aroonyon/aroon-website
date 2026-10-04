@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aroonyontrakit.vercel.app/sitemap.xml
