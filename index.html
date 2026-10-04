@@ -3,6 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VN08JLQQC3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VN08JLQQC3');
+
+  // track the contact buttons (call / LINE / map / Facebook) as events
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var h = a.getAttribute('href'), ev = null;
+    if (h.indexOf('tel:') === 0) ev = 'click_call';
+    else if (h.indexOf('lin.ee') > -1 || h.indexOf('line.me') > -1) ev = 'click_line';
+    else if (h.indexOf('maps.') > -1 || h.indexOf('/maps') > -1) ev = 'click_map';
+    else if (h.indexOf('facebook.com') > -1) ev = 'click_facebook';
+    if (ev) gtag('event', ev, { link_url: h, link_text: (a.textContent || '').trim().slice(0, 60), transport_type: 'beacon' });
+  }, true);
+</script>
 <title>อู่ซ่อมรถ สะเดา | อรุณยนตรกิจ – ซ่อมจบ รู้ราคาก่อนซ่อม</title>
 <meta name="description" content="อู่ซ่อมรถ อ.สะเดา จ.สงขลา ดูแลรถมา 23 ปี ตรวจรถฟรี ส่งรูปอาการทาง LINE ให้ช่างดูก่อน แจ้งราคาเป็นรายการก่อนลงมือทุกครั้ง โทร 081 599 5121">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
