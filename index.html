@@ -443,6 +443,29 @@ a,button,summary{-webkit-tap-highlight-color:transparent}
 /* ---- skip layout/paint work for sections that are far below the screen ---- */
 #main > section ~ section{content-visibility:auto;contain-intrinsic-size:auto 900px}
 
+
+/* ---- brand strip ---- */
+.brands{background:#FFFFFF;border-bottom:1px solid var(--line)}
+.brands-in{display:flex;align-items:center;gap:40px;padding-block:28px}
+.brands-label{margin:0;flex:none;white-space:nowrap}
+.brands-view{flex:1;min-width:0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.brands-track{display:flex;width:max-content;animation:brands-scroll 40s linear infinite}
+.brands-view:hover .brands-track{animation-play-state:paused}
+.brands-set{display:flex;align-items:center;gap:64px;margin:0;padding:0 32px;list-style:none}
+.brands-set li{display:flex;align-items:center;height:56px}
+.brands-set img{display:block;height:auto;max-width:none}
+@keyframes brands-scroll{from{transform:translateX(0)}to{transform:translateX(-25%)}}
+@media (prefers-reduced-motion: reduce){
+  .brands-track{animation:none;width:auto}
+  .brands-set{flex-wrap:wrap;justify-content:center;row-gap:16px}
+  .brands-set[aria-hidden]{display:none}
+}
+@media (max-width:599px){
+  .brands-in{flex-direction:column;align-items:flex-start;gap:14px;padding-block:22px}
+  .brands-view{width:100%}
+  .brands-set{gap:40px;padding:0 20px;zoom:.8}
+  .brands-track{animation-duration:32s}
+}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 </style>
@@ -514,6 +537,13 @@ html{scroll-behavior:smooth}
       <p style="margin: 10px 0 0; font-size: clamp(16px, calc(16px + 0.109 * (100vw - 360px) / 100), 17px); line-height: 1.53;">ช่างประจำร้าน</p>
       <p style="margin: 2px 0 0; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6; color: var(--ink-muted);">มากี่ครั้งก็เจอหน้าเดิม</p>
     </div>
+  </div>
+</section>
+<!-- BRANDS: what the shop uses and sells -->
+<section class="brands" aria-label="ยี่ห้อที่ร้านใช้และจำหน่าย">
+  <div class="ar-container brands-in">
+    <p class="ar-eyebrow brands-label">ยี่ห้อที่ร้านใช้และจำหน่าย</p>
+    <div class="brands-view"><div class="brands-track"><ul class="brands-set"><li><img src="/assets/brands/shell.webp" alt="Shell" width="56" height="52" loading="lazy" decoding="async"></li><li><img src="/assets/brands/maxxis.webp" alt="Maxxis" width="144" height="24" loading="lazy" decoding="async"></li><li><img src="/assets/brands/giti.webp" alt="Giti" width="124" height="27" loading="lazy" decoding="async"></li><li><img src="/assets/brands/gs-battery.webp" alt="GS Battery" width="52" height="52" loading="lazy" decoding="async"></li><li><img src="/assets/brands/delphi.webp" alt="Delphi" width="95" height="36" loading="lazy" decoding="async"></li></ul><ul class="brands-set" aria-hidden="true"><li><img src="/assets/brands/shell.webp" alt="" width="56" height="52" loading="lazy" decoding="async"></li><li><img src="/assets/brands/maxxis.webp" alt="" width="144" height="24" loading="lazy" decoding="async"></li><li><img src="/assets/brands/giti.webp" alt="" width="124" height="27" loading="lazy" decoding="async"></li><li><img src="/assets/brands/gs-battery.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></li><li><img src="/assets/brands/delphi.webp" alt="" width="95" height="36" loading="lazy" decoding="async"></li></ul><ul class="brands-set" aria-hidden="true"><li><img src="/assets/brands/shell.webp" alt="" width="56" height="52" loading="lazy" decoding="async"></li><li><img src="/assets/brands/maxxis.webp" alt="" width="144" height="24" loading="lazy" decoding="async"></li><li><img src="/assets/brands/giti.webp" alt="" width="124" height="27" loading="lazy" decoding="async"></li><li><img src="/assets/brands/gs-battery.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></li><li><img src="/assets/brands/delphi.webp" alt="" width="95" height="36" loading="lazy" decoding="async"></li></ul><ul class="brands-set" aria-hidden="true"><li><img src="/assets/brands/shell.webp" alt="" width="56" height="52" loading="lazy" decoding="async"></li><li><img src="/assets/brands/maxxis.webp" alt="" width="144" height="24" loading="lazy" decoding="async"></li><li><img src="/assets/brands/giti.webp" alt="" width="124" height="27" loading="lazy" decoding="async"></li><li><img src="/assets/brands/gs-battery.webp" alt="" width="52" height="52" loading="lazy" decoding="async"></li><li><img src="/assets/brands/delphi.webp" alt="" width="95" height="36" loading="lazy" decoding="async"></li></ul></div></div>
   </div>
 </section>
 
@@ -788,6 +818,28 @@ html{scroll-behavior:smooth}
     "https://lin.ee/pWKsWKY"
    ],
    "knowsLanguage": "th",
+   "brand": [
+    {
+     "@type": "Brand",
+     "name": "Shell"
+    },
+    {
+     "@type": "Brand",
+     "name": "Maxxis"
+    },
+    {
+     "@type": "Brand",
+     "name": "Giti"
+    },
+    {
+     "@type": "Brand",
+     "name": "GS Battery"
+    },
+    {
+     "@type": "Brand",
+     "name": "Delphi"
+    }
+   ],
    "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "บริการซ่อมรถ",
