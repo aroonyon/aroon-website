@@ -502,6 +502,11 @@ a,button,summary{-webkit-tap-highlight-color:transparent}
   .svc2-promises{gap:16px}
 }
 
+/* ---- CTA buttons: brand display font (loopless Thai), never a system fallback ---- */
+.ar-btn{font-family:"Prompt","Leelawadee UI","Thonburi","Noto Sans Thai",sans-serif !important;font-weight:600 !important}
+/* loopless Thai fallbacks before the system font */
+:root,[data-theme]{--font-body:"Anuphan","Noto Sans Thai","Leelawadee UI","Thonburi",sans-serif;--font-display:"Prompt","Anuphan","Leelawadee UI","Thonburi",sans-serif}
+
 /* ---- Google reviews as text ---- */
 .grev{margin:0;background:#FFFFFF;border:1px solid var(--line);box-shadow:var(--shadow-lift);padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px}
 .grev-who{display:flex;align-items:center;gap:12px}
