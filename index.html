@@ -466,6 +466,35 @@ a,button,summary{-webkit-tap-highlight-color:transparent}
   .brands-set{gap:40px;padding:0 20px;zoom:.8}
   .brands-track{animation-duration:48s}
 }
+
+/* ---- services band ---- */
+.svc2{background:var(--surface);color:var(--ink);position:relative;overflow:hidden}
+.svc2-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center;padding-block:96px}
+.svc2-h{margin:0 0 28px;font-family:var(--font-label),var(--font-display);font-weight:700;font-size:15px;letter-spacing:.14em;color:var(--ink-muted)}
+.svc2-promises{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.svc2-promises li{display:flex;align-items:baseline;gap:20px;font-family:var(--font-display);font-weight:600;font-size:clamp(24px,calc(24px + 1.2 * (100vw - 360px) / 100),36px);line-height:1.25;color:var(--steel)}
+.svc2-promises b{color:var(--ink);font-weight:700}
+.svc2-promises .n{flex:none;font-family:var(--font-label);font-size:16px;font-weight:700;color:var(--orange)}
+.svc2-note{margin:26px 0 0;font-size:14px;line-height:1.5;color:var(--ink-muted)}
+.svc2-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.svc2-tile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;aspect-ratio:1/1;padding:18px 10px 16px;background:var(--surface-raised);color:var(--ink);text-decoration:none;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%);transition:background .2s,transform .2s}
+.svc2-tile::after{content:"";position:absolute;inset:0;border:1px solid var(--line);clip-path:inherit;pointer-events:none;transition:border-color .2s}
+.svc2-tile .n{position:absolute;top:12px;left:14px;font-family:var(--font-label);font-size:12px;font-weight:600;color:var(--ink-muted)}
+.svc2-tile .ic{width:40px;height:40px;display:block}
+.svc2-tile .ic svg{width:100%;height:100%;display:block}
+.svc2-tile h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:17px;line-height:1.3;text-align:center}
+.svc2-tile:hover,.svc2-tile:focus-visible{background:#1D1E21;transform:translateY(-3px)}
+.svc2-tile:hover::after,.svc2-tile:focus-visible::after{border-color:var(--orange)}
+.svc2-tile:hover .ic{color:var(--orange)}
+@media (max-width:1023px){
+  .svc2-in{grid-template-columns:minmax(0,1fr);gap:40px;padding-block:72px}
+}
+@media (max-width:599px){
+  .svc2-in{padding-block:56px;gap:32px}
+  .svc2-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .svc2-tile{aspect-ratio:auto;min-height:124px}
+  .svc2-promises{gap:16px}
+}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 </style>
@@ -561,24 +590,36 @@ html{scroll-behavior:smooth}
     <figure data-rv="up" style="--d: 0.15s; margin: 0; background: #FFFFFF; border: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow-lift);"><img loading="lazy" decoding="async" src="assets/google-review-tum.webp" width="435" height="175" alt="รีวิว Google จาก Tum Kitisak 5 ดาว: ช่างจริงใจ อธิบายดีมาก แนะนำที่นี่เลยครับ" style="display: block; width: 100%; height: auto;"></figure>
   </div>
 </section>
-
-
-
-
-
-<!-- PROCESS (carbon) -->
-<section data-theme="carbon" style="background: var(--surface); color: var(--ink);">
-  <div class="ar-container" style="padding-block: 88px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 36px;">
-      <span class="ar-stripe" style="--h:5px;--w:24px" aria-hidden="true"><i></i><i></i><i></i></span>
-      <h2 style="margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, calc(24px + 1.087 * (100vw - 360px) / 100), 34px); line-height: 1.35;">ฝั่งคุณทำแค่นี้ ที่เหลือช่างจัดการ</h2>
+<!-- SERVICES: three promises + what we fix -->
+<section class="svc2" data-theme="carbon" aria-labelledby="svc2-h">
+  <div class="ar-container svc2-in">
+    <div class="svc2-left">
+      <h2 id="svc2-h" class="svc2-h" data-rv="up">บริการของเรา</h2>
+      <ol class="svc2-promises">
+        <li data-rv="up" style="--d:0.10s"><span class="n">01</span><span><b>ซ่อมจบ</b> ในที่เดียว</span></li>
+        <li data-rv="up" style="--d:0.22s"><span class="n">02</span><span><b>คืนอะไหล่เก่า</b> ทั้งหมด</span></li>
+        <li data-rv="up" style="--d:0.34s"><span class="n">03</span><span><b>รับประกัน</b> ทุกการซ่อม*</span></li>
+      </ol>
+      <p class="svc2-note" data-rv="up" style="--d:.5s">*เงื่อนไขและระยะรับประกันตามที่ร้านแจ้ง</p>
     </div>
-    <div data-steps="">
-      <div class="track" aria-hidden="true"><div class="fill"></div></div>
-      <ol class="ar-steps"><li><b>คุณส่งรูป</b><span>ถ่ายรูปหรืออัดคลิปส่ง LINE ใช้เวลาไม่ถึง 2 นาที</span></li><li><b>นำรถเข้าร้าน</b><span>ไม่ต้องจองคิว ทักบอกก่อนจะรอน้อยลง</span></li><li><b>อ่านใบราคาใน LINE</b><span>แยกทุกรายการ อ่านจากที่ไหนก็ได้</span></li><li><b>คุณตอบ “ทำ”</b><span>เลือกทำบางรายการได้ งานทั่วไปเสร็จในวันเดียว</span></li><li><b>รับรถ</b><span>จ่ายตามใบราคา พร้อมดูอะไหล่เก่า</span></li></ol>
-    </div>
+    <ul class="svc2-grid">
+      <li data-rv="up" style="--d:0.00s"><a href="https://lin.ee/pWKsWKY" class="svc2-tile" aria-label="ช่วงล่าง – ทักถามช่างทาง LINE"><span class="n">01</span><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 3h6M16 3v5"/><rect x="12" y="8" width="8" height="9" rx="1.5"/><path d="M16 17v3"/><path d="M11 20l10 2.2M11 22.8l10 2.2M11 25.6l10 2.2"/><path d="M13 29h6"/></svg></span><h3>ช่วงล่าง</h3></a></li>
+      <li data-rv="up" style="--d:0.06s"><a href="https://lin.ee/pWKsWKY" class="svc2-tile" aria-label="ระบบเบรก – ทักถามช่างทาง LINE"><span class="n">02</span><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="15" cy="16" r="10"/><circle cx="15" cy="16" r="3"/><path d="M15 9.5v.01M21.5 16h.01M15 22.5v.01M8.5 16h.01"/><path d="M24 8.5c2.6 2 4 4.8 4 7.5s-1.4 5.5-4 7.5"/></svg></span><h3>ระบบเบรก</h3></a></li>
+      <li data-rv="up" style="--d:0.12s"><a href="https://lin.ee/pWKsWKY" class="svc2-tile" aria-label="แบตเตอรี่ – ทักถามช่างทาง LINE"><span class="n">03</span><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="9" width="24" height="17" rx="2"/><path d="M8.5 9V6.5h4V9M19.5 9V6.5h4V9"/><path d="M8 17.5h5M10.5 15v5M19 17.5h5"/></svg></span><h3>แบตเตอรี่</h3></a></li>
+      <li data-rv="up" style="--d:0.18s"><a href="https://lin.ee/pWKsWKY" class="svc2-tile" aria-label="น้ำมันเครื่อง – ทักถามช่างทาง LINE"><span class="n">04</span><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 13h4l2-3h6l9-3 3 3-8 9H9a4 4 0 0 1-4-4z"/><path d="M11 10V7.5M8.5 7.5h5"/><path d="M27.5 17.5c0 1.6-1 2.6-1.8 2.6s-1.7-1-1.7-2.6c0-1 1.7-3.5 1.7-3.5s1.8 2.5 1.8 3.5z"/></svg></span><h3>น้ำมันเครื่อง</h3></a></li>
+      <li data-rv="up" style="--d:0.24s"><a href="https://lin.ee/pWKsWKY" class="svc2-tile" aria-label="เช็กสภาพ – ทักถามช่างทาง LINE"><span class="n">05</span><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="5" width="18" height="23" rx="2"/><path d="M12 5V3.5h8V5"/><path d="M11 12l1.5 1.5L15 11M18 12.5h4M11 18l1.5 1.5L15 17M18 18.5h4M11 24h11"/></svg></span><h3>เช็กสภาพ</h3></a></li>
+      <li data-rv="up" style="--d:0.30s"><a href="https://lin.ee/pWKsWKY" class="svc2-tile" aria-label="ยางรถยนต์ – ทักถามช่างทาง LINE"><span class="n">06</span><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="5.5"/><circle cx="16" cy="16" r="1.4"/><path d="M16 4v6.5M16 21.5V28M4 16h6.5M21.5 16H28"/></svg></span><h3>ยางรถยนต์</h3></a></li>
+      <li data-rv="up" style="--d:0.36s"><a href="https://lin.ee/pWKsWKY" class="svc2-tile" aria-label="ระบบแอร์ – ทักถามช่างทาง LINE"><span class="n">07</span><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M16 3v26M4.7 9.5l22.6 13M4.7 22.5l22.6-13"/><path d="M12.5 5.5L16 8.5l3.5-3M12.5 26.5L16 23.5l3.5 3M5.3 14.5l4.4-1.4-1-4.5M26.7 17.5l-4.4 1.4 1 4.5M5.3 17.5l4.4 1.4-1 4.5M26.7 14.5l-4.4-1.4 1-4.5"/></svg></span><h3>ระบบแอร์</h3></a></li>
+      <li data-rv="up" style="--d:0.42s"><a href="https://lin.ee/pWKsWKY" class="svc2-tile" aria-label="เครื่องยนต์ – ทักถามช่างทาง LINE"><span class="n">08</span><span class="ic"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9 11h12l3 3h2v3h2v-3M28 21v-3M26 21v3h-3l-2 2H11l-2-3H6v-3H4v-4h2v-3h3z"/><path d="M12 11V8h6v3M10 8h10"/><path d="M15 15.5l-2 3.5h4l-2 3.5"/></svg></span><h3>เครื่องยนต์</h3></a></li>
+    </ul>
   </div>
 </section>
+
+
+
+
+
+
 
 <!-- REAL QUOTE from Aroonyon OS -->
 <section id="bill" class="ar-container" style="padding-block: 112px;">
@@ -618,6 +659,19 @@ html{scroll-behavior:smooth}
     </figure>
   </div>
 </section>
+<!-- PROCESS (carbon) -->
+<section data-theme="carbon" style="background: var(--surface); color: var(--ink);">
+  <div class="ar-container" style="padding-block: 88px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 36px;">
+      <span class="ar-stripe" style="--h:5px;--w:24px" aria-hidden="true"><i></i><i></i><i></i></span>
+      <h2 style="margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, calc(24px + 1.087 * (100vw - 360px) / 100), 34px); line-height: 1.35;">ฝั่งคุณทำแค่นี้ ที่เหลือช่างจัดการ</h2>
+    </div>
+    <div data-steps="">
+      <div class="track" aria-hidden="true"><div class="fill"></div></div>
+      <ol class="ar-steps"><li><b>คุณส่งรูป</b><span>ถ่ายรูปหรืออัดคลิปส่ง LINE ใช้เวลาไม่ถึง 2 นาที</span></li><li><b>นำรถเข้าร้าน</b><span>ไม่ต้องจองคิว ทักบอกก่อนจะรอน้อยลง</span></li><li><b>อ่านใบราคาใน LINE</b><span>แยกทุกรายการ อ่านจากที่ไหนก็ได้</span></li><li><b>คุณตอบ “ทำ”</b><span>เลือกทำบางรายการได้ งานทั่วไปเสร็จในวันเดียว</span></li><li><b>รับรถ</b><span>จ่ายตามใบราคา พร้อมดูอะไหล่เก่า</span></li></ol>
+    </div>
+  </div>
+</section>
 
 
 
@@ -628,7 +682,7 @@ html{scroll-behavior:smooth}
       <h2 style="margin: 0 0 12px; font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, calc(24px + 1.087 * (100vw - 360px) / 100), 34px); line-height: 1.35;">ถามกันบ่อย</h2>
       <p style="margin: 0; font-size: 16px; line-height: 1.63; color: var(--ink-muted);">ไม่เจอคำถามของคุณ? ทักมาถามช่างทาง LINE ได้เลย</p>
     </div>
-    <div class="ar-faq"><details open=""><summary>ส่งรูปให้ช่างดู หรือเข้าไปตรวจแล้วไม่ซ่อม ต้องเสียเงินไหม</summary><p>ไม่เสีย ตรวจรถฟรี ส่งรูปให้ช่างดูก็ฟรี ถ้าตรวจแล้วยังไม่ซ่อมก็ไม่มีค่าใช้จ่าย</p></details><details><summary>ต้องจองคิวก่อนไหม</summary><p>ไม่ต้อง แต่ทักทาง LINE ก่อนจะรอน้อยลง ช่างจะเตรียมอะไหล่ไว้ให้</p></details><details><summary>ซ่อมกี่วันเสร็จ</summary><p>งานทั่วไปเสร็จในวันเดียว ถ้าต้องรออะไหล่ เราบอกวันรับรถตั้งแต่ตอนแจ้งราคา</p></details><details><summary>ใช้อะไหล่แท้หรือเทียบ</summary><p>เสนอให้เลือกทั้งสองแบบ บอกยี่ห้อ รุ่น และราคาของแต่ละแบบ</p></details><details><summary>อู่อรุณยนตรกิจอยู่ตรงไหน</summary><p>ย่านคลองแงะ เลขที่ 85 หมู่ 5 ถนนกาญจนวนิช ต.พังลา อ.สะเดา จ.สงขลา 90170 กด &quot;นำทางด้วย Google Maps&quot; ท้ายหน้านี้เพื่อเปิดเส้นทาง</p></details><details><summary>อู่เปิดกี่โมง ปิดวันไหน</summary><p>เปิดวันจันทร์–เสาร์ 08:30–17:30 น. ปิดวันอาทิตย์</p></details><details><summary>รับซ่อมอะไรบ้าง</summary><p>ระบบเบรก (ผ้าเบรก ก้ามเบรก จาน/ดรัม) เปลี่ยนน้ำมันเครื่องและกรอง แบตเตอรี่ ไดสตาร์ท ไดชาร์จ ระบบแอร์รถยนต์ ช่วงล่าง (ลูกหมาก โช้ค บูช) และเช็กระยะตามคู่มือรถ</p></details><details><summary>รู้ราคาก่อนซ่อมได้ยังไง</summary><p>ส่งรูปหรือคลิปอาการทาง LINE ให้ช่างดูก่อน พอรถถึงร้านช่างแจ้งราคาเป็นรายการ แยกค่าอะไหล่กับค่าแรง คุณตอบ &quot;ทำ&quot; ก่อนเราถึงลงมือ</p></details><details><summary>มีรับประกันงานซ่อมไหม</summary><p>มี ระยะรับประกันขึ้นกับงานซ่อมแต่ละอย่าง เฉพาะงานที่ทำกับทางร้าน ช่างแจ้งให้ตอนส่งราคา</p></details></div>
+    <div class="ar-faq"><details open=""><summary>ส่งรูปให้ช่างดู หรือเข้าไปตรวจแล้วไม่ซ่อม ต้องเสียเงินไหม</summary><p>ไม่เสีย ตรวจรถฟรี ส่งรูปให้ช่างดูก็ฟรี ถ้าตรวจแล้วยังไม่ซ่อมก็ไม่มีค่าใช้จ่าย</p></details><details><summary>ต้องจองคิวก่อนไหม</summary><p>ไม่ต้อง แต่ทักทาง LINE ก่อนจะรอน้อยลง ช่างจะเตรียมอะไหล่ไว้ให้</p></details><details><summary>ซ่อมกี่วันเสร็จ</summary><p>งานทั่วไปเสร็จในวันเดียว ถ้าต้องรออะไหล่ เราบอกวันรับรถตั้งแต่ตอนแจ้งราคา</p></details><details><summary>ใช้อะไหล่แท้หรือเทียบ</summary><p>เสนอให้เลือกทั้งสองแบบ บอกยี่ห้อ รุ่น และราคาของแต่ละแบบ</p></details><details><summary>อู่อรุณยนตรกิจอยู่ตรงไหน</summary><p>ย่านคลองแงะ เลขที่ 85 หมู่ 5 ถนนกาญจนวนิช ต.พังลา อ.สะเดา จ.สงขลา 90170 กด &quot;นำทางด้วย Google Maps&quot; ท้ายหน้านี้เพื่อเปิดเส้นทาง</p></details><details><summary>อู่เปิดกี่โมง ปิดวันไหน</summary><p>เปิดวันจันทร์–เสาร์ 08:30–17:30 น. ปิดวันอาทิตย์</p></details><details><summary>รับซ่อมอะไรบ้าง</summary><p>ระบบเบรก (ผ้าเบรก ก้ามเบรก จาน/ดรัม) เปลี่ยนน้ำมันเครื่องและกรอง แบตเตอรี่ ไดสตาร์ท ไดชาร์จ ระบบแอร์รถยนต์ ช่วงล่าง (ลูกหมาก โช้ค บูช) ยางรถยนต์ เครื่องยนต์ และเช็กระยะ เช็กสภาพรถตามคู่มือ</p></details><details><summary>รู้ราคาก่อนซ่อมได้ยังไง</summary><p>ส่งรูปหรือคลิปอาการทาง LINE ให้ช่างดูก่อน พอรถถึงร้านช่างแจ้งราคาเป็นรายการ แยกค่าอะไหล่กับค่าแรง คุณตอบ &quot;ทำ&quot; ก่อนเราถึงลงมือ</p></details><details><summary>มีรับประกันงานซ่อมไหม</summary><p>มี ระยะรับประกันขึ้นกับงานซ่อมแต่ละอย่าง เฉพาะงานที่ทำกับทางร้าน ช่างแจ้งให้ตอนส่งราคา</p></details></div>
   </div>
 </section>
 
@@ -698,7 +752,7 @@ html{scroll-behavior:smooth}
     "อู่อรุณยนตรกิจ",
     "อรุณยนตรกิจ สะเดา"
    ],
-   "description": "อู่ซ่อมรถใน อ.สะเดา จ.สงขลา ดูแลรถมา 23 ปี ช่างประจำ 4 คน ตรวจรถฟรี ส่งรูปอาการทาง LINE ให้ช่างดูก่อน แจ้งราคาเป็นรายการแยกค่าอะไหล่กับค่าแรงก่อนลงมือ และคืนอะไหล่เก่าให้ดูทุกชิ้น",
+   "description": "อู่ซ่อมรถใน อ.สะเดา จ.สงขลา ดูแลรถมา 23 ปี ช่างประจำ 4 คน ตรวจรถฟรี ส่งรูปอาการทาง LINE ให้ช่างดูก่อน แจ้งราคาเป็นรายการแยกค่าอะไหล่กับค่าแรงก่อนลงมือ คืนอะไหล่เก่าทั้งหมด ซ่อมจบในที่เดียว และรับประกันทุกการซ่อม",
    "url": "https://aroonyontrakit.vercel.app/",
    "logo": "https://aroonyontrakit.vercel.app/logo.png",
    "image": [
@@ -832,8 +886,24 @@ html{scroll-behavior:smooth}
       "@type": "Offer",
       "itemOffered": {
        "@type": "Service",
-       "name": "เช็กระยะ",
-       "description": "เช็กระยะตามคู่มือรถ"
+       "name": "เช็กระยะ เช็กสภาพรถ",
+       "description": "เช็กระยะตามคู่มือรถ ตรวจสภาพรถ"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "ยางรถยนต์",
+       "description": "เปลี่ยนยางรถยนต์ตามรุ่นรถ"
+      }
+     },
+     {
+      "@type": "Offer",
+      "itemOffered": {
+       "@type": "Service",
+       "name": "ซ่อมเครื่องยนต์",
+       "description": "ตรวจและซ่อมเครื่องยนต์"
       }
      }
     ]
@@ -903,7 +973,7 @@ html{scroll-behavior:smooth}
      "name": "รับซ่อมอะไรบ้าง",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "ระบบเบรก (ผ้าเบรก ก้ามเบรก จาน/ดรัม) เปลี่ยนน้ำมันเครื่องและกรอง แบตเตอรี่ ไดสตาร์ท ไดชาร์จ ระบบแอร์รถยนต์ ช่วงล่าง (ลูกหมาก โช้ค บูช) และเช็กระยะตามคู่มือรถ"
+      "text": "ระบบเบรก (ผ้าเบรก ก้ามเบรก จาน/ดรัม) เปลี่ยนน้ำมันเครื่องและกรอง แบตเตอรี่ ไดสตาร์ท ไดชาร์จ ระบบแอร์รถยนต์ ช่วงล่าง (ลูกหมาก โช้ค บูช) ยางรถยนต์ เครื่องยนต์ และเช็กระยะ เช็กสภาพรถตามคู่มือ"
      }
     },
     {
