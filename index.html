@@ -4,13 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VN08JLQQC3"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-VN08JLQQC3');
+
+  // load the tag after the page is shown so it never delays the first paint
+  window.addEventListener('load', function () {
+    var go = function () { var t = document.createElement('script'); t.async = true; t.src = 'https://www.googletagmanager.com/gtag/js?id=G-VN08JLQQC3'; document.head.appendChild(t); };
+    if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 2500 }); else setTimeout(go, 1200);
+  });
 
   // track the contact buttons (call / LINE / map / Facebook) as events
   document.addEventListener('click', function (e) {
@@ -44,9 +49,18 @@
 <meta property="og:image:alt" content="หน้าร้านอรุณยนตรกิจ อู่ซ่อมรถ อ.สะเดา">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aroonyontrakit.vercel.app/og-image.jpg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;600&family=Prompt:wght@600;700&family=Saira:wght@600;700&family=Charmonman:wght@700&display=swap">
+<link rel="preload" href="/assets/fonts/prompt-thai-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/anuphan-thai-400.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Prompt';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/prompt-thai-600.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Prompt';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/prompt-latin-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+2605,U+0E3F}
+@font-face{font-family:'Prompt';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/prompt-thai-700.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Prompt';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/prompt-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+2605,U+0E3F}
+@font-face{font-family:'Anuphan';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/anuphan-thai-400.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Anuphan';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/anuphan-latin-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+2605,U+0E3F}
+@font-face{font-family:'Anuphan';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/anuphan-thai-600.woff2) format('woff2');unicode-range:U+0E01-0E5B,U+200C-200D,U+25CC}
+@font-face{font-family:'Anuphan';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/anuphan-latin-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+2605,U+0E3F}
+@font-face{font-family:'Saira';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/saira-latin-600.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+2605,U+0E3F}
+@font-face{font-family:'Saira';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/saira-latin-700.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+2605,U+0E3F}</style>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -675,6 +689,16 @@ a,button,summary{-webkit-tap-highlight-color:transparent}
 }
 
 
+/* ---- hero: animate position only, never hide it (keeps the headline visible for first paint / LCP) ---- */
+@keyframes heroIn{from{transform:var(--from)}to{transform:none}}
+@media (prefers-reduced-motion: no-preference){
+  .hero [data-rv]{animation:heroIn .6s cubic-bezier(.2,.7,.2,1) var(--d,0s) both}
+  .hero [data-rv=up]{--from:translateY(20px)}
+  .hero [data-rv=pop]{--from:translateY(10px) scale(.94)}
+  .hero [data-rv=stripe]{--from:translateX(-48px)}
+}
+#root .hero [data-rv]{opacity:1 !important}
+
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 </style>
@@ -713,7 +737,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
     <div style="position: relative;">
-      <img src="assets/shop-front.jpg" width="435" height="326" fetchpriority="high" alt="หน้าร้านอรุณยนตรกิจ ริมถนนกาญจนวนิช อ.สะเดา" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; clip-path: polygon(0 0, calc(100% - 48px) 0, 100% 48px, 100% 100%, 0 100%);">
+      <img src="assets/shop-front.webp" width="435" height="326" fetchpriority="high" alt="หน้าร้านอรุณยนตรกิจ ริมถนนกาญจนวนิช อ.สะเดา" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; clip-path: polygon(0 0, calc(100% - 48px) 0, 100% 48px, 100% 100%, 0 100%);">
     </div>
   </div>
 </section>
@@ -876,18 +900,18 @@ html{scroll-behavior:smooth}
   <h2 style="margin: 0 0 28px; font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, calc(28px + 1.304 * (100vw - 360px) / 100), 40px); line-height: 1.35;">ฟังจากลูกค้าเอง<br>ว่ามาซ่อมที่นี่แล้วเป็นยังไง</h2>
   <div class="rev">
     <figure data-rv="up" style="--d: 0s; margin: 0; display: flex; flex-direction: column; gap: 14px;">
-      <video preload="none" title="รีวิวจากคุณบอย ลูกค้าอรุณยนตรกิจ" aria-label="รีวิวจากคุณบอย ลูกค้าอรุณยนตรกิจ" src="assets/review-boy.mp4" poster="assets/review-boy-poster.jpg" controls="" playsinline="" style="display: block; width: 100%; aspect-ratio: 16 / 9; background: #0B0B0C; object-fit: cover;"></video>
+      <video preload="none" title="รีวิวจากคุณบอย ลูกค้าอรุณยนตรกิจ" aria-label="รีวิวจากคุณบอย ลูกค้าอรุณยนตรกิจ" src="assets/review-boy.mp4" poster="assets/review-boy-poster.webp" controls="" playsinline="" style="display: block; width: 100%; aspect-ratio: 16 / 9; background: #0B0B0C; object-fit: cover;"></video>
       <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;"><b style="font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px); line-height: 1.5;">คุณบอย</b><span style="font-size: 14px; color: var(--ink-muted);">ลูกค้าอรุณยนตรกิจ</span></figcaption>
     </figure>
     <figure data-rv="up" style="--d: 0.15s; margin: 0; display: flex; flex-direction: column; gap: 14px;">
-      <video preload="none" title="รีวิวจากคุณอู๊ด ลูกค้าอรุณยนตรกิจ" aria-label="รีวิวจากคุณอู๊ด ลูกค้าอรุณยนตรกิจ" src="assets/review-ood.mp4" poster="assets/review-ood-poster.jpg" controls="" playsinline="" style="display: block; width: 100%; aspect-ratio: 16 / 9; background: #0B0B0C; object-fit: cover;"></video>
+      <video preload="none" title="รีวิวจากคุณอู๊ด ลูกค้าอรุณยนตรกิจ" aria-label="รีวิวจากคุณอู๊ด ลูกค้าอรุณยนตรกิจ" src="assets/review-ood.mp4" poster="assets/review-ood-poster.webp" controls="" playsinline="" style="display: block; width: 100%; aspect-ratio: 16 / 9; background: #0B0B0C; object-fit: cover;"></video>
       <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;"><b style="font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px); line-height: 1.5;">คุณอู๊ด</b><span style="font-size: 14px; color: var(--ink-muted);">ลูกค้าอรุณยนตรกิจ</span></figcaption>
     </figure>
   </div>
   <div style="display: flex; align-items: center; gap: 10px; margin: 48px 0 16px;"><span style="font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px);">รีวิวบน Google</span><span style="color: var(--orange); letter-spacing: 2px;">★★★★★</span></div>
   <div class="rev" style="align-items: start;">
-    <figure data-rv="up" style="--d: 0s; margin: 0; background: #FFFFFF; border: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow-lift);"><img loading="lazy" decoding="async" src="assets/google-review-maem.png" width="435" height="217" alt="รีวิว Google จากคุณแหม่ม สะเดา 5 ดาว: ช่างดูแลดีมาก อธิบายดีมาก แก้ปัญหาจบ จริงใจ ตรงไปตรงมา" style="display: block; width: 100%; height: auto;"></figure>
-    <figure data-rv="up" style="--d: 0.15s; margin: 0; background: #FFFFFF; border: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow-lift);"><img loading="lazy" decoding="async" src="assets/google-review-tum.png" width="435" height="175" alt="รีวิว Google จาก Tum Kitisak 5 ดาว: ช่างจริงใจ อธิบายดีมาก แนะนำที่นี่เลยครับ" style="display: block; width: 100%; height: auto;"></figure>
+    <figure data-rv="up" style="--d: 0s; margin: 0; background: #FFFFFF; border: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow-lift);"><img loading="lazy" decoding="async" src="assets/google-review-maem.webp" width="435" height="217" alt="รีวิว Google จากคุณแหม่ม สะเดา 5 ดาว: ช่างดูแลดีมาก อธิบายดีมาก แก้ปัญหาจบ จริงใจ ตรงไปตรงมา" style="display: block; width: 100%; height: auto;"></figure>
+    <figure data-rv="up" style="--d: 0.15s; margin: 0; background: #FFFFFF; border: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow-lift);"><img loading="lazy" decoding="async" src="assets/google-review-tum.webp" width="435" height="175" alt="รีวิว Google จาก Tum Kitisak 5 ดาว: ช่างจริงใจ อธิบายดีมาก แนะนำที่นี่เลยครับ" style="display: block; width: 100%; height: auto;"></figure>
   </div>
 </section>
 
@@ -1006,16 +1030,15 @@ html{scroll-behavior:smooth}
     });
   }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
 
-  var els = root.querySelectorAll('[data-rv],[data-count],[data-chat],[data-rows],[data-steps],[data-bill],[data-sign],[data-nudge]');
+  var els = Array.prototype.filter.call(root.querySelectorAll('[data-rv],[data-count],[data-chat],[data-rows],[data-steps],[data-bill],[data-sign],[data-nudge]'), function (el) { return !el.closest('.hero'); });
   els.forEach(function (el) { el.setAttribute('data-obs', ''); io.observe(el); });
 
   // safety net: anything on screen that the observer missed is shown after 1.5s
   setTimeout(function () {
     var h = window.innerHeight || document.documentElement.clientHeight;
-    els.forEach(function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < h && r.bottom > 0) { reveal(el); io.unobserve(el); }
-    });
+    // read every position first, then write, so the browser lays out only once
+    var onScreen = els.filter(function (el) { var r = el.getBoundingClientRect(); return r.top < h && r.bottom > 0; });
+    onScreen.forEach(function (el) { reveal(el); io.unobserve(el); });
   }, 1500);
 })();
 
