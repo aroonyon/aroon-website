@@ -501,6 +501,57 @@ a,button,summary{-webkit-tap-highlight-color:transparent}
   .svc2-tile{aspect-ratio:auto;min-height:124px}
   .svc2-promises{gap:16px}
 }
+
+/* ---- Google reviews as text ---- */
+.grev{margin:0;background:#FFFFFF;border:1px solid var(--line);box-shadow:var(--shadow-lift);padding:22px 22px 24px;display:flex;flex-direction:column;gap:12px}
+.grev-who{display:flex;align-items:center;gap:12px}
+.grev-who img{width:40px;height:40px;border-radius:50%;flex:none}
+.grev-who b{display:block;font-family:var(--font-display);font-weight:600;font-size:17px;line-height:1.3}
+.grev-src{display:block;font-size:14px;line-height:1.4;color:var(--ink-muted)}
+.grev-stars{color:#F5B400;font-size:18px;letter-spacing:2px;line-height:1}
+.grev blockquote{margin:0;font-size:16px;line-height:1.7;color:var(--ink)}
+.grev-more{margin:20px 0 0;font-size:15px}
+.grev-more a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font-weight:600;text-underline-offset:4px}
+
+/* ---- Thai labels: no tracking, readable size ---- */
+.ar-eyebrow,.svc2-h,.brands-label{letter-spacing:0 !important;text-transform:none;font-size:14px !important}
+
+/* ---- FAQ "show more" (phones only) ---- */
+.faq-more{display:none}
+@media (max-width:599px){
+  [data-faq]:not(.all) details[data-more]{display:none}
+  [data-faq]:not(.all) + .faq-more{display:flex}
+  .faq-more{align-items:center;justify-content:center;width:100%;min-height:48px;margin-top:20px;background:#FFFFFF;border:1.5px solid var(--ink);color:var(--ink);font:600 16px/1.4 var(--font-display);cursor:pointer}
+}
+
+@media (max-width:599px){
+  /* one-row top bar */
+  .topbar > div{flex-wrap:nowrap !important;padding-block:10px !important;gap:12px !important}
+  .topbar .ar-logo{width:158px !important;flex:none}
+  .topbar .ar-open{font-size:13px;white-space:nowrap}
+
+  /* stat captions */
+  .stat p{font-size:14px !important}
+
+  /* service tiles: compact */
+  .svc2-tile{min-height:96px !important;padding:14px 8px 12px !important;gap:8px !important}
+  .svc2-tile .ic{width:30px !important;height:30px !important}
+  .svc2-tile h3{font-size:16px !important}
+  .svc2-tile .n{top:8px;left:10px}
+
+  /* job sheet: readable rows, numbers never split */
+  .paper td,.paper th,.paper figcaption,.paper p{font-size:14px !important}
+  .paper [style*="white-space"],.paper td:last-child{white-space:nowrap}
+
+  /* footer: smaller logo, tappable contact rows */
+  footer .ar-logo{width:168px !important}
+  .foot-link{display:flex;align-items:center;min-height:48px;padding:0 14px;margin:0 0 8px;background:var(--surface-raised);border:1px solid var(--line);text-decoration:none;font-weight:600}
+  .foot-link::after{content:"→";margin-left:auto;color:var(--orange)}
+  .foot p:has(> .foot-link){margin:0 !important}
+
+  /* reviews */
+  .grev{padding:18px 18px 20px}
+}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 </style>
@@ -509,7 +560,7 @@ html{scroll-behavior:smooth}
 <div id="root" style="width: 100%; background: #FFFFFF; color: var(--ink); font-family: var(--font-body); overflow: hidden;">
 
 <!-- NAV -->
-<nav aria-label="เมนูหลัก" style="position: sticky; top: 0; z-index: 5; background: var(--surface-raised); border-bottom: 1px solid var(--line);">
+<nav class="topbar" aria-label="เมนูหลัก" style="position: sticky; top: 0; z-index: 5; background: var(--surface-raised); border-bottom: 1px solid var(--line);">
   <div class="ar-container" style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 14px; flex-wrap: wrap;">
     <span class="ar-logo" style="width:260px" role="img" aria-label="อรุณยนตรกิจ AROON Auto Service"><svg viewBox="0 0 776 72" aria-hidden="true" focusable="false"><g transform="translate(14.04 6.00) scale(1.0) translate(8.04 0) skewX(-15)"><path d="M0 60 L30 0 L50 0 L80 60 L62 60 L40 16 L18 60 Z" fill="#FF6A13" fill-rule="evenodd"/><path d="M94 0 L154 0 L166 12 L166 26 L156 36 L168 60 L150 60 L140 40 L109 40 L109 60 L94 60 Z M109 13 L148 13 L151 16 L151 24 L148 27 L109 27 Z" fill="#0B0B0C" fill-rule="evenodd"/><path d="M192 0 L248 0 L260 12 L260 48 L248 60 L192 60 L180 48 L180 12 Z M202 14 L238 14 L245 21 L245 39 L238 46 L202 46 L195 39 L195 21 Z" fill="#0B0B0C" fill-rule="evenodd"/><path d="M286 0 L342 0 L354 12 L354 48 L342 60 L286 60 L274 48 L274 12 Z M296 14 L332 14 L339 21 L339 39 L332 46 L296 46 L289 39 L289 21 Z" fill="#0B0B0C" fill-rule="evenodd"/><path d="M368 60 L368 0 L384 0 L424 38 L424 0 L440 0 L440 60 L424 60 L384 22 L384 60 Z" fill="#0B0B0C" fill-rule="evenodd"/></g><polygon points="490.1,4 493.1,4 485.1,68.0 482.1,68.0" fill="#C9C9C6"/><path transform="translate(514.31 46.54)" d="M10.032 0.43999999999999995Q7.9639999999999995 0.43999999999999995 5.83 0.176Q3.6959999999999997 -0.088 1.8479999999999999 -0.594Q0.0 -1.0999999999999999 -1.232 -1.716L1.452 -14.431999999999999H13.596L12.671999999999999 -8.36H9.68L9.372 -6.9079999999999995Q9.812 -6.776 10.34 -6.731999999999999Q10.867999999999999 -6.688 11.395999999999999 -6.688Q13.244 -6.688 14.123999999999999 -7.942Q15.004 -9.196 15.531999999999998 -11.703999999999999Q15.796 -12.892 15.796 -13.728Q15.796 -15.62 14.585999999999999 -16.258Q13.376 -16.896 10.956 -16.896Q9.196 -16.896 6.731999999999999 -16.588Q4.268 -16.279999999999998 1.98 -15.62L3.432 -22.528Q5.279999999999999 -23.099999999999998 7.369999999999999 -23.473999999999997Q9.459999999999999 -23.848 11.483999999999998 -24.024Q13.508 -24.2 15.047999999999998 -24.2Q20.855999999999998 -24.2 23.804 -21.845999999999997Q26.752 -19.491999999999997 26.752 -15.047999999999998Q26.752 -14.299999999999999 26.663999999999998 -13.442Q26.575999999999997 -12.584 26.4 -11.703999999999999Q25.607999999999997 -7.656 23.848 -4.949999999999999Q22.087999999999997 -2.2439999999999998 18.787999999999997 -0.9019999999999999Q15.488 0.43999999999999995 10.032 0.43999999999999995Z M34.98 0.43999999999999995Q31.988 0.43999999999999995 29.458 0.0Q26.927999999999997 -0.43999999999999995 25.651999999999997 -1.056L27.104 -8.008Q28.072 -7.523999999999999 29.392 -7.106Q30.712 -6.688 32.054 -6.468Q33.396 -6.247999999999999 34.32 -6.247999999999999Q35.596 -6.247999999999999 36.233999999999995 -6.468Q36.872 -6.688 36.872 -7.26Q36.872 -8.008 35.684 -8.425999999999998Q34.495999999999995 -8.844 32.692 -9.636Q30.58 -10.559999999999999 29.567999999999998 -11.748Q28.555999999999997 -12.936 28.555999999999997 -14.696Q28.555999999999997 -15.136 28.599999999999998 -15.597999999999999Q28.644 -16.06 28.776 -16.587999999999997Q29.479999999999997 -19.932 32.516 -22.066Q35.552 -24.2 41.623999999999995 -24.2Q43.208 -24.2 44.814 -24.046Q46.42 -23.892 47.806 -23.65Q49.19199999999999 -23.407999999999998 49.983999999999995 -23.144L48.532 -16.236Q47.256 -16.852 45.584 -17.182000000000002Q43.912 -17.512 42.68 -17.512Q41.403999999999996 -17.512 40.568 -17.336Q39.732 -17.16 39.644 -16.587999999999997Q39.467999999999996 -15.84 40.54599999999999 -15.422Q41.623999999999995 -15.004 43.471999999999994 -14.255999999999998Q45.93599999999999 -13.287999999999998 46.97 -12.165999999999999Q48.004 -11.043999999999999 48.004 -9.24Q48.004 -8.272 47.739999999999995 -7.084Q47.256 -4.8839999999999995 45.804 -3.1899999999999995Q44.352 -1.496 41.711999999999996 -0.528Q39.071999999999996 0.43999999999999995 34.98 0.43999999999999995Z M34.583999999999996 11.44 35.419999999999995 7.568H32.824L34.495999999999995 1.188H45.14399999999999L42.943999999999996 11.44Z M70.66399999999999 0.43999999999999995Q67.496 0.43999999999999995 65.714 -1.144Q63.931999999999995 -2.7279999999999998 63.931999999999995 -5.544Q63.931999999999995 -6.028 63.976 -6.555999999999999Q64.02 -7.084 64.15199999999999 -7.656L65.428 -13.639999999999999Q65.648 -14.607999999999999 65.648 -15.136Q65.648 -16.016 65.12 -16.412Q64.592 -16.808 63.27199999999999 -16.808Q62.303999999999995 -16.808 61.489999999999995 -16.61Q60.675999999999995 -16.412 59.928 -16.104V-16.016L63.931999999999995 -14.431999999999999L63.05199999999999 -10.251999999999999Q60.895999999999994 -9.591999999999999 60.455999999999996 -7.656L60.41199999999999 -7.26Q60.367999999999995 -7.127999999999999 60.367999999999995 -6.9079999999999995Q60.367999999999995 -6.159999999999999 61.24799999999999 -6.159999999999999H62.25999999999999L60.983999999999995 0.0H52.711999999999996Q50.81999999999999 0.0 49.83 -0.9239999999999999Q48.839999999999996 -1.8479999999999999 48.839999999999996 -3.388Q48.839999999999996 -3.916 48.971999999999994 -4.576L49.544 -7.436Q49.895999999999994 -8.844 51.017999999999994 -10.207999999999998Q52.13999999999999 -11.572 53.67999999999999 -12.144L50.379999999999995 -13.42L51.831999999999994 -20.24Q54.339999999999996 -21.692 57.815999999999995 -22.945999999999998Q61.291999999999994 -24.2 65.428 -24.2Q69.344 -24.2 71.764 -23.165999999999997Q74.184 -22.131999999999998 75.328 -20.372Q76.472 -18.612 76.472 -16.412Q76.472 -15.883999999999999 76.428 -15.355999999999998Q76.38399999999999 -14.828 76.252 -14.299999999999999L75.196 -9.328Q75.15199999999999 -9.152 75.13 -8.954Q75.10799999999999 -8.756 75.10799999999999 -8.58Q75.10799999999999 -7.3919999999999995 76.56 -7.3919999999999995Q77.044 -7.3919999999999995 77.792 -7.656Q78.53999999999999 -7.92 78.892 -8.272L82.192 -23.759999999999998H92.83999999999999L87.82399999999998 0.0H77.92399999999999L77.88 -1.408Q76.51599999999999 -0.6599999999999999 74.71199999999999 -0.10999999999999999Q72.90799999999999 0.43999999999999995 70.66399999999999 0.43999999999999995Z M103.31199999999998 0.43999999999999995Q97.24 0.43999999999999995 94.38 -1.43Q91.51999999999998 -3.3 91.51999999999998 -6.335999999999999Q91.51999999999998 -6.688 91.564 -7.084Q91.60799999999999 -7.4799999999999995 91.69599999999998 -7.92Q92.00399999999999 -9.328 92.77399999999999 -10.45Q93.54399999999998 -11.572 94.55599999999998 -12.276Q94.11599999999999 -12.803999999999998 93.80799999999999 -13.508Q93.49999999999999 -14.212 93.49999999999999 -15.18Q93.49999999999999 -15.531999999999998 93.56599999999999 -15.884Q93.63199999999999 -16.236 93.67599999999999 -16.631999999999998Q95.30399999999999 -24.2 104.85199999999999 -24.2Q106.52399999999999 -24.2 107.844 -23.979999999999997Q109.16399999999999 -23.759999999999998 109.95599999999999 -23.407999999999998L108.72399999999999 -17.599999999999998Q107.71199999999999 -17.82 106.65599999999999 -17.82Q104.49999999999999 -17.82 104.49999999999999 -16.323999999999998Q104.49999999999999 -15.488 105.64399999999999 -15.488H107.57999999999998L106.30399999999999 -9.328H104.32399999999998Q102.87199999999999 -9.328 102.65199999999999 -8.096Q102.51999999999998 -7.4799999999999995 102.95999999999998 -7.084Q103.39999999999999 -6.688 104.85199999999999 -6.688Q107.53599999999999 -6.688 107.93199999999999 -8.888L111.1 -23.759999999999998H121.74799999999999L118.624 -8.975999999999999Q117.65599999999999 -4.311999999999999 113.95999999999998 -1.9359999999999997Q110.26399999999998 0.43999999999999995 103.31199999999998 0.43999999999999995Z M127.90799999999999 0.43999999999999995Q125.00399999999999 0.43999999999999995 123.08999999999999 -1.232Q121.17599999999999 -2.904 121.17599999999999 -5.763999999999999Q121.17599999999999 -6.247999999999999 121.24199999999999 -6.709999999999999Q121.30799999999999 -7.172 121.39599999999999 -7.656L124.82799999999999 -23.759999999999998H135.476L132.44 -9.328Q132.396 -9.152 132.37399999999997 -8.975999999999999Q132.35199999999998 -8.799999999999999 132.35199999999998 -8.668Q132.35199999999998 -7.3919999999999995 134.024 -7.3919999999999995Q134.50799999999998 -7.3919999999999995 135.36599999999999 -7.656Q136.224 -7.92 136.576 -8.272L139.87599999999998 -23.759999999999998H150.524L145.50799999999998 0.0H135.608L135.564 -1.408Q134.2 -0.6599999999999999 132.176 -0.10999999999999999Q130.152 0.43999999999999995 127.90799999999999 0.43999999999999995Z M158.268 0.43999999999999995Q155.892 0.43999999999999995 153.934 -0.374Q151.976 -1.188 150.832 -2.9699999999999998Q149.688 -4.752 149.688 -7.611999999999999Q149.688 -9.24 150.084 -11.219999999999999Q151.492 -17.907999999999998 154.61599999999999 -21.054Q157.74 -24.2 162.052 -24.2Q163.68 -24.2 164.824 -23.694Q165.968 -23.188 166.848 -21.956Q168.256 -23.188 170.06 -23.694Q171.864 -24.2 173.404 -24.2Q176.176 -24.2 177.78199999999998 -22.857999999999997Q179.388 -21.516 179.388 -19.316Q179.388 -18.7 179.256 -18.04L175.428 0.0H165.264L168.124 -13.596Q168.256 -14.079999999999998 168.256 -14.431999999999999Q168.256 -15.18 167.464 -15.18Q167.112 -15.18 166.738 -14.959999999999999Q166.364 -14.739999999999998 166.144 -14.388H164.12Q164.032 -14.739999999999998 163.834 -14.959999999999999Q163.636 -15.18 163.24 -15.18Q162.58 -15.18 161.92000000000002 -14.19Q161.26 -13.2 160.864 -11.219999999999999Q160.732 -10.559999999999999 160.644 -10.009999999999998Q160.556 -9.459999999999999 160.556 -8.975999999999999Q160.556 -7.92 161.062 -7.414Q161.568 -6.9079999999999995 162.756 -6.9079999999999995Q163.988 -6.9079999999999995 165.044 -7.303999999999999L163.59199999999998 -0.528Q162.624 -0.088 161.28199999999998 0.176Q159.94 0.43999999999999995 158.268 0.43999999999999995Z M187.35199999999998 0.43999999999999995Q184.35999999999999 0.43999999999999995 181.82999999999998 0.0Q179.29999999999998 -0.43999999999999995 178.024 -1.056L179.476 -8.008Q180.444 -7.523999999999999 181.76399999999998 -7.106Q183.08399999999997 -6.688 184.426 -6.468Q185.768 -6.247999999999999 186.69199999999998 -6.247999999999999Q187.968 -6.247999999999999 188.606 -6.468Q189.244 -6.688 189.244 -7.26Q189.244 -8.008 188.05599999999998 -8.425999999999998Q186.868 -8.844 185.064 -9.636Q182.952 -10.559999999999999 181.94 -11.748Q180.928 -12.936 180.928 -14.696Q180.928 -15.136 180.97199999999998 -15.597999999999999Q181.016 -16.06 181.148 -16.587999999999997Q181.85199999999998 -19.932 184.88799999999998 -22.066Q187.92399999999998 -24.2 193.99599999999998 -24.2Q195.57999999999998 -24.2 197.18599999999998 -24.046Q198.79199999999997 -23.892 200.178 -23.65Q201.564 -23.407999999999998 202.356 -23.144L200.904 -16.236Q199.628 -16.852 197.956 -17.182000000000002Q196.284 -17.512 195.052 -17.512Q193.77599999999998 -17.512 192.94 -17.336Q192.10399999999998 -17.16 192.016 -16.587999999999997Q191.83999999999997 -15.84 192.91799999999998 -15.422Q193.99599999999998 -15.004 195.844 -14.255999999999998Q198.308 -13.287999999999998 199.34199999999998 -12.165999999999999Q200.37599999999998 -11.043999999999999 200.37599999999998 -9.24Q200.37599999999998 -8.272 200.112 -7.084Q199.628 -4.8839999999999995 198.176 -3.1899999999999995Q196.724 -1.496 194.084 -0.528Q191.444 0.43999999999999995 187.35199999999998 0.43999999999999995Z M200.37599999999998 0.0 201.91599999999997 -7.436Q202.26799999999997 -8.844 203.39 -10.207999999999998Q204.51199999999997 -11.572 206.052 -12.144L202.75199999999998 -13.42L204.20399999999998 -20.24Q206.712 -21.692 210.27599999999998 -22.945999999999998Q213.83999999999997 -24.2 217.97599999999997 -24.2Q222.06799999999998 -24.2 224.642 -23.1Q227.21599999999998 -22.0 228.426 -20.152Q229.63599999999997 -18.304 229.63599999999997 -16.104Q229.63599999999997 -15.664 229.59199999999998 -15.224Q229.54799999999997 -14.783999999999999 229.45999999999998 -14.299999999999999L226.42399999999998 0.0H215.33599999999998L218.19599999999997 -13.639999999999999Q218.284 -14.036 218.32799999999997 -14.344Q218.37199999999999 -14.652 218.37199999999999 -14.959999999999999Q218.37199999999999 -15.927999999999999 217.79999999999998 -16.368Q217.22799999999998 -16.808 215.82 -16.808Q214.85199999999998 -16.808 213.95 -16.61Q213.04799999999997 -16.412 212.29999999999998 -16.104V-16.016L216.30399999999997 -14.431999999999999L215.42399999999998 -10.251999999999999Q214.368 -9.943999999999999 213.68599999999998 -9.196Q213.004 -8.448 212.73999999999998 -7.172L211.24399999999997 0.0Z M209.176 -25.52 211.156 -32.516H233.332L231.83599999999998 -25.52Z M240.24 0.43999999999999995Q238.48 0.43999999999999995 236.72 0.15399999999999997Q234.96 -0.132 234.168 -0.572L233.112 -7.172H230.12L232.05599999999998 -14.475999999999999H240.68L241.82399999999998 -7.568Q242.704 -8.184 243.386 -9.218Q244.06799999999998 -10.251999999999999 244.464 -12.011999999999999Q244.552 -12.54 244.618 -13.024Q244.684 -13.508 244.684 -13.904Q244.684 -15.443999999999999 243.64999999999998 -16.17Q242.61599999999999 -16.896 240.01999999999998 -16.896Q238.304 -16.896 236.17000000000002 -16.566000000000003Q234.036 -16.236 231.968 -15.707999999999998L233.42 -22.528Q236.148 -23.407999999999998 239.052 -23.804Q241.956 -24.2 244.244 -24.2Q250.14 -24.2 252.91199999999998 -21.89Q255.684 -19.58 255.684 -15.443999999999999Q255.684 -13.815999999999999 255.288 -11.968Q254.408 -7.832 252.164 -5.06Q249.92 -2.288 246.83999999999997 -0.9239999999999999Q243.76 0.43999999999999995 240.24 0.43999999999999995Z" fill="#0B0B0C"/></svg></span>
     <div style="display: flex; align-items: center; gap: 16px;">
@@ -532,7 +583,7 @@ html{scroll-behavior:smooth}
         <a class="ar-btn ar-btn-line ar-btn-lg" href="https://lin.ee/pWKsWKY"><span class="ar-icon" style="display:inline-flex;width:18px;height:18px" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8M8 13h5"/></svg></span><span>ส่งรูปอาการทาง LINE</span></a>
         <a href="tel:0815995121" style="font-weight: 600; font-size: clamp(16px, calc(16px + 0.109 * (100vw - 360px) / 100), 17px); color: var(--ink); text-underline-offset: 6px; text-decoration-color: var(--orange); text-decoration-thickness: 2px; padding: 12px 8px;">โทร 081 599 5121</a>
       </div>
-      <p style="margin: 14px 0 0; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6; color: var(--ink-muted);">ตอบกลับใน ช่วง 08:30–17:30 น.</p>
+      <p style="margin: 14px 0 0; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6; color: var(--ink-muted);">ช่างตอบทุกวัน จันทร์–เสาร์ 08:30–17:30 น.</p>
     </div>
     <div style="position: relative;">
       <img src="assets/shop-front.webp" width="435" height="326" fetchpriority="high" alt="หน้าร้านอรุณยนตรกิจ ริมถนนกาญจนวนิช อ.สะเดา" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; clip-path: polygon(0 0, calc(100% - 48px) 0, 100% 48px, 100% 100%, 0 100%);">
@@ -553,7 +604,7 @@ html{scroll-behavior:smooth}
     <div style="position: relative; padding-top: 18px;">
       <div data-rv="line" style="position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--orange); --d: 0s;"></div>
       <div data-count="cars" style="font-family: var(--font-label); font-weight: 700; font-size: clamp(32px, calc(32px + 4.348 * (100vw - 360px) / 100), 72px); line-height: 1.06; letter-spacing: -0.02em;">2,300<span style="color: var(--orange);">+</span></div>
-      <p style="margin: 10px 0 0; font-size: clamp(16px, calc(16px + 0.109 * (100vw - 360px) / 100), 17px); line-height: 1.53;">คันที่ผ่านมือช่างอรุณยนตรกิจ</p>
+      <p style="margin: 10px 0 0; font-size: clamp(16px, calc(16px + 0.109 * (100vw - 360px) / 100), 17px); line-height: 1.53;">คันที่ผ่านมือช่าง</p>
       <p style="margin: 2px 0 0; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6; color: var(--ink-muted);">เก็บประวัติซ่อมทุกคัน ถามย้อนหลังได้</p>
     </div>
     <div style="position: relative; padding-top: 18px;">
@@ -583,18 +634,27 @@ html{scroll-behavior:smooth}
   <div class="rev">
     <figure data-rv="up" style="--d: 0s; margin: 0; display: flex; flex-direction: column; gap: 14px;">
       <video preload="none" title="รีวิวจากคุณบอย ลูกค้าอรุณยนตรกิจ" aria-label="รีวิวจากคุณบอย ลูกค้าอรุณยนตรกิจ" src="assets/review-boy.mp4" data-poster="assets/review-boy-poster.webp" controls="" playsinline="" style="display: block; width: 100%; aspect-ratio: 16 / 9; background: #0B0B0C; object-fit: cover;"></video>
-      <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;"><b style="font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px); line-height: 1.5;">คุณบอย</b><span style="font-size: 14px; color: var(--ink-muted);">ลูกค้าอรุณยนตรกิจ</span></figcaption>
+      <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;"><b style="font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px); line-height: 1.5;">คุณบอย</b><span style="font-size: 14px; color: var(--ink-muted);">ลูกค้าอรุณยนตรกิจ · คลิป 1:09 นาที</span></figcaption>
     </figure>
     <figure data-rv="up" style="--d: 0.15s; margin: 0; display: flex; flex-direction: column; gap: 14px;">
       <video preload="none" title="รีวิวจากคุณอู๊ด ลูกค้าอรุณยนตรกิจ" aria-label="รีวิวจากคุณอู๊ด ลูกค้าอรุณยนตรกิจ" src="assets/review-ood.mp4" data-poster="assets/review-ood-poster.webp" controls="" playsinline="" style="display: block; width: 100%; aspect-ratio: 16 / 9; background: #0B0B0C; object-fit: cover;"></video>
-      <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;"><b style="font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px); line-height: 1.5;">คุณอู๊ด</b><span style="font-size: 14px; color: var(--ink-muted);">ลูกค้าอรุณยนตรกิจ</span></figcaption>
+      <figcaption style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;"><b style="font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px); line-height: 1.5;">คุณอู๊ด</b><span style="font-size: 14px; color: var(--ink-muted);">ลูกค้าอรุณยนตรกิจ · คลิป 1:16 นาที</span></figcaption>
     </figure>
   </div>
   <div style="display: flex; align-items: center; gap: 10px; margin: 48px 0 16px;"><span style="font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px);">รีวิวบน Google</span><span style="color: var(--orange); letter-spacing: 2px;">★★★★★</span></div>
   <div class="rev" style="align-items: start;">
-    <figure data-rv="up" style="--d: 0s; margin: 0; background: #FFFFFF; border: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow-lift);"><img loading="lazy" decoding="async" src="assets/google-review-maem.webp" width="435" height="217" alt="รีวิว Google จากคุณแหม่ม สะเดา 5 ดาว: ช่างดูแลดีมาก อธิบายดีมาก แก้ปัญหาจบ จริงใจ ตรงไปตรงมา" style="display: block; width: 100%; height: auto;"></figure>
-    <figure data-rv="up" style="--d: 0.15s; margin: 0; background: #FFFFFF; border: 1px solid var(--line); padding: 8px; box-shadow: var(--shadow-lift);"><img loading="lazy" decoding="async" src="assets/google-review-tum.webp" width="435" height="175" alt="รีวิว Google จาก Tum Kitisak 5 ดาว: ช่างจริงใจ อธิบายดีมาก แนะนำที่นี่เลยครับ" style="display: block; width: 100%; height: auto;"></figure>
+    <figure class="grev" data-rv="up" style="--d: 0s;">
+      <figcaption class="grev-who"><img src="/assets/avatar-maem.webp" alt="" width="40" height="40" loading="lazy" decoding="async"><span><b>แหม่ม สะเดา</b><span class="grev-src">รีวิวบน Google</span></span></figcaption>
+      <div class="grev-stars" role="img" aria-label="5 ดาวจาก 5">★★★★★</div>
+      <blockquote>ช่างดูแลดีมากๆๆๆ อธิบายดีมาก แก้ปัญหาจบ แหม่มไปมาหลายที่ ที่ชอบเจ้านี้คือ จริงใจ ตรงไปตรงมา อันนี้ควรเปลี่ยน อันนี้ยังไม่ต้องเปลี่ยนก่อนก็ได้ ไปร้านอื่นคือเชียกันอย่างเดียว เป็นลูกค้ากันยาวๆเลยค่ะ</blockquote>
+    </figure>
+    <figure class="grev" data-rv="up" style="--d: 0.15s;">
+      <figcaption class="grev-who"><img src="/assets/avatar-tum.webp" alt="" width="40" height="40" loading="lazy" decoding="async"><span><b>Tum Kitisak</b><span class="grev-src">รีวิวบน Google</span></span></figcaption>
+      <div class="grev-stars" role="img" aria-label="5 ดาวจาก 5">★★★★★</div>
+      <blockquote>วันนี้มาเปลี่ยนยางรถยนต์ ช่างจริงใจ อธิบายดีมากครับ ส่วนตัวเปลี่ยนที่หาดใหญ่มาหลายที่แล้ว แนะนำที่นี่เลยครับ</blockquote>
+    </figure>
   </div>
+  <p class="grev-more"><a href="https://maps.app.goo.gl/bZSdhCEzq9GPLfnf7" target="_blank" rel="noopener">ดูรีวิวทั้งหมดบน Google Maps →</a></p>
 </section>
 <!-- SERVICES: three promises + what we fix -->
 <section class="svc2" data-theme="carbon" aria-labelledby="svc2-h">
@@ -644,7 +704,7 @@ html{scroll-behavior:smooth}
       <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; padding-bottom: 16px; border-bottom: 2px solid var(--ink);">
         <div>
           <p style="margin: 0; font-family: var(--font-display); font-weight: 600; font-size: clamp(18px, calc(18px + 0.217 * (100vw - 360px) / 100), 20px);">ใบงานซ่อม</p>
-          <p style="margin: 4px 0 0; font-size: 13px; color: var(--ink-muted);">30 ก.ย. 2569 · กระบะดีเซล · เลขไมล์ 269,429 กม.</p>
+          <p style="margin: 4px 0 0; font-size: 13px; color: var(--ink-muted);"><span style="white-space:nowrap">30 ก.ย. 2569</span> · กระบะดีเซล · <span style="white-space:nowrap">เลขไมล์ 269,429 กม.</span></p>
         </div>
         <span style="background: var(--ink); color: var(--surface); font-size: 12px; font-weight: 600; padding: 4px 10px;">ลูกค้า ███████</span>
       </div>
@@ -688,7 +748,8 @@ html{scroll-behavior:smooth}
       <h2 style="margin: 0 0 12px; font-family: var(--font-display); font-weight: 600; font-size: clamp(24px, calc(24px + 1.087 * (100vw - 360px) / 100), 34px); line-height: 1.35;">ถามกันบ่อย</h2>
       <p style="margin: 0; font-size: 16px; line-height: 1.63; color: var(--ink-muted);">ไม่เจอคำถามของคุณ? ทักมาถามช่างทาง LINE ได้เลย</p>
     </div>
-    <div class="ar-faq"><details open=""><summary>ส่งรูปให้ช่างดู หรือเข้าไปตรวจแล้วไม่ซ่อม ต้องเสียเงินไหม</summary><p>ไม่เสีย ตรวจรถฟรี ส่งรูปให้ช่างดูก็ฟรี ถ้าตรวจแล้วยังไม่ซ่อมก็ไม่มีค่าใช้จ่าย</p></details><details><summary>ต้องจองคิวก่อนไหม</summary><p>ไม่ต้อง แต่ทักทาง LINE ก่อนจะรอน้อยลง ช่างจะเตรียมอะไหล่ไว้ให้</p></details><details><summary>ซ่อมกี่วันเสร็จ</summary><p>งานทั่วไปเสร็จในวันเดียว ถ้าต้องรออะไหล่ เราบอกวันรับรถตั้งแต่ตอนแจ้งราคา</p></details><details><summary>ใช้อะไหล่แท้หรือเทียบ</summary><p>เราเสนอให้ใช้อะไหล่แท้ คุณภาพเป็นหลัก เพื่อให้อายุการใช้งาน และประสิทธิภาพดีที่สุด ทั้งนี้ขึ้นอยู่กับงบของลูกค้าด้วยครับ</p></details><details><summary>อู่อรุณยนตรกิจอยู่ตรงไหน</summary><p>ย่านคลองแงะ เลขที่ 85 หมู่ 5 ถนนกาญจนวนิช ต.พังลา อ.สะเดา จ.สงขลา 90170 กด &quot;นำทางด้วย Google Maps&quot; ท้ายหน้านี้เพื่อเปิดเส้นทาง</p></details><details><summary>อู่เปิดกี่โมง ปิดวันไหน</summary><p>เปิดวันจันทร์–เสาร์ 08:30–17:30 น. ปิดวันอาทิตย์</p></details><details><summary>รับซ่อมอะไรบ้าง</summary><p>ระบบเบรก (ผ้าเบรก ก้ามเบรก จาน/ดรัม) เปลี่ยนน้ำมันเครื่องและกรอง แบตเตอรี่ ไดสตาร์ท ไดชาร์จ ระบบแอร์รถยนต์ ช่วงล่าง (ลูกหมาก โช้ค บูช) ยางรถยนต์ เครื่องยนต์ และเช็กระยะ เช็กสภาพรถตามคู่มือ</p></details><details><summary>รู้ราคาก่อนซ่อมได้ยังไง</summary><p>ส่งรูปหรือคลิปอาการทาง LINE ให้ช่างดูก่อน พอรถถึงร้านช่างแจ้งราคาเป็นรายการ แยกค่าอะไหล่กับค่าแรง คุณตอบ &quot;ทำ&quot; ก่อนเราถึงลงมือ</p></details><details><summary>มีรับประกันงานซ่อมไหม</summary><p>มี ระยะรับประกันขึ้นกับงานซ่อมแต่ละอย่าง เฉพาะงานที่ทำกับทางร้าน ช่างแจ้งให้ตอนส่งราคา</p></details></div>
+    <div class="ar-faq" data-faq><details open=""><summary>ส่งรูปให้ช่างดู หรือเข้าไปตรวจแล้วไม่ซ่อม ต้องเสียเงินไหม</summary><p>ไม่เสีย ตรวจรถฟรี ส่งรูปให้ช่างดูก็ฟรี ถ้าตรวจแล้วยังไม่ซ่อมก็ไม่มีค่าใช้จ่าย</p></details><details><summary>ต้องจองคิวก่อนไหม</summary><p>ไม่ต้อง แต่ทักทาง LINE ก่อนจะรอน้อยลง ช่างจะเตรียมอะไหล่ไว้ให้</p></details><details><summary>ซ่อมกี่วันเสร็จ</summary><p>งานทั่วไปเสร็จในวันเดียว ถ้าต้องรออะไหล่ เราบอกวันรับรถตั้งแต่ตอนแจ้งราคา</p></details><details><summary>ใช้อะไหล่แท้หรือเทียบ</summary><p>เราเสนอให้ใช้อะไหล่แท้ คุณภาพเป็นหลัก เพื่อให้อายุการใช้งาน และประสิทธิภาพดีที่สุด ทั้งนี้ขึ้นอยู่กับงบของลูกค้าด้วยครับ</p></details><details><summary>อู่อรุณยนตรกิจอยู่ตรงไหน</summary><p>ย่านคลองแงะ เลขที่ 85 หมู่ 5 ถนนกาญจนวนิช ต.พังลา อ.สะเดา จ.สงขลา 90170 กด &quot;นำทางด้วย Google Maps&quot; ท้ายหน้านี้เพื่อเปิดเส้นทาง</p></details><details data-more><summary>อู่เปิดกี่โมง ปิดวันไหน</summary><p>เปิดวันจันทร์–เสาร์ 08:30–17:30 น. ปิดวันอาทิตย์</p></details><details data-more><summary>รับซ่อมอะไรบ้าง</summary><p>ระบบเบรก (ผ้าเบรก ก้ามเบรก จาน/ดรัม) เปลี่ยนน้ำมันเครื่องและกรอง แบตเตอรี่ ไดสตาร์ท ไดชาร์จ ระบบแอร์รถยนต์ ช่วงล่าง (ลูกหมาก โช้ค บูช) ยางรถยนต์ เครื่องยนต์ และเช็กระยะ เช็กสภาพรถตามคู่มือ</p></details><details data-more><summary>รู้ราคาก่อนซ่อมได้ยังไง</summary><p>ส่งรูปหรือคลิปอาการทาง LINE ให้ช่างดูก่อน พอรถถึงร้านช่างแจ้งราคาเป็นรายการ แยกค่าอะไหล่กับค่าแรง คุณตอบ &quot;ทำ&quot; ก่อนเราถึงลงมือ</p></details><details data-more><summary>มีรับประกันงานซ่อมไหม</summary><p>มี ระยะรับประกันขึ้นกับงานซ่อมแต่ละอย่าง เฉพาะงานที่ทำกับทางร้าน ช่างแจ้งให้ตอนส่งราคา</p></details></div>
+      <button type="button" class="faq-more" data-faq-more>ดูคำถามทั้งหมด (9)</button>
   </div>
 </section>
 
@@ -702,13 +763,13 @@ html{scroll-behavior:smooth}
       <span class="ar-open"><b aria-hidden="true"></b>เปิดอยู่<span>· ปิด 17:30 น.</span></span>
     </div>
     <div><p class="ar-eyebrow" style="margin: 0 0 12px;">เวลาเปิด</p><p style="margin: 0 0 6px; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;">จันทร์–เสาร์ 08:30–17:30</p><p style="margin: 0; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;">ปิดวันอาทิตย์</p></div>
-    <div><p class="ar-eyebrow" style="margin: 0 0 12px;">ติดต่อ</p><p style="margin: 0 0 6px; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;"><a href="tel:0815995121" style="color: var(--ink);">โทร 081 599 5121</a></p><p style="margin: 0 0 6px; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;"><a href="https://lin.ee/pWKsWKY" style="color: var(--ink);">แชท LINE OA</a></p><p style="margin: 0; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;"><a href="https://www.facebook.com/aroonyontrakit1" style="color: var(--ink);">Facebook อรุณยนตรกิจ</a></p></div>
+    <div><p class="ar-eyebrow" style="margin: 0 0 12px;">ติดต่อ</p><p style="margin: 0 0 6px; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;"><a class="foot-link" href="tel:0815995121" style="color: var(--ink);">โทร 081 599 5121</a></p><p style="margin: 0 0 6px; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;"><a class="foot-link" href="https://lin.ee/pWKsWKY" style="color: var(--ink);">แชท LINE OA</a></p><p style="margin: 0; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;"><a class="foot-link" href="https://www.facebook.com/aroonyontrakit1" style="color: var(--ink);">Facebook อรุณยนตรกิจ</a></p></div>
     <div><p class="ar-eyebrow" style="margin: 0 0 12px;">ที่อยู่</p><p style="margin: 0 0 12px; font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); line-height: 1.6;">เลขที่ 85 หมู่ 5 ถนนกาญจนวนิช<br>ต.พังลา อ.สะเดา จ.สงขลา 90170</p><a href="https://maps.app.goo.gl/bZSdhCEzq9GPLfnf7" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 48px; padding: 12px 16px; background: var(--surface-raised); border: 1px solid var(--line); color: var(--ink); font-size: clamp(14px, calc(14px + 0.109 * (100vw - 360px) / 100), 15px); font-weight: 600; text-decoration: none;"><span style="display: flex; align-items: center; gap: 10px;"><span style="display: inline-flex; color: var(--orange);"><span class="ar-icon" style="display:inline-flex;width:20px;height:20px" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span></span>นำทางด้วย Google Maps</span><span style="color: var(--orange);">→</span></a></div>
   </div>
 </footer>
 
-<div class="page-pad"></div>
-<nav class="mbar" aria-label="ติดต่อร้าน"><a href="https://lin.ee/pWKsWKY" style="background: #049A40; color: #FFFFFF;">ส่งรูปทาง LINE</a><a href="tel:0815995121" style="color: var(--ink); box-shadow: inset 0 0 0 2px var(--ink);">โทร</a></nav>
+
+
 </div>
 <script type="application/ld+json">
 {
@@ -1064,6 +1125,17 @@ html{scroll-behavior:smooth}
     var vo = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { load(e.target); vo.unobserve(e.target); } }); }, { rootMargin: '600px 0px' });
     vids.forEach(function (v) { vo.observe(v); });
   })();
+
+
+  /* ---------- FAQ show-all ---------- */
+  document.querySelectorAll('[data-faq-more]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var list = btn.previousElementSibling;
+      if (list) list.classList.add('all');
+      var first = list && list.querySelector('details[data-more]');
+      if (first) first.querySelector('summary').focus();
+    });
+  });
 
   /* ---------- 2. Scroll-in motion + count-up ---------- */
   var root = document.getElementById('root');
