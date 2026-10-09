@@ -21,8 +21,8 @@
 - ซ่อมช่วงล่าง: ลูกหมาก โช้คอัพ บูช
 - เช็กระยะ: เช็กระยะตามคู่มือรถ
 
-## ยี่ห้อที่ร้านใช้และจำหน่าย
-Shell, Maxxis, Giti, GS Battery, Delphi
+## แบรนด์ที่เราเลือกใช้
+Shell, Maxxis, Monroe, Giti, TRW, GS Battery, SpeedMate, Delphi
 
 ## วิธีทำงานของร้าน
 1. ลูกค้าส่งรูปหรือคลิปอาการทาง LINE
